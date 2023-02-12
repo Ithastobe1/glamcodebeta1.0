@@ -840,6 +840,15 @@ a:hover {
   border: 1px solid #fff !important;
 }
 
+.removeknowmore
+{
+  background-color: white;
+}
+
+.know-more-wrapper {
+  height: 463px;
+  overflow: auto;
+}
 .removeknowmore p {
   background-color: transparent !important;
   text-align: justify;
@@ -2223,17 +2232,7 @@ button:disabled {
 
 }
 
-.customArrows {
- padding: 24px !important;
- right: -68px !important;
- border-radius: 100%;
-}
-
-.customArrows ::before{
-  content: url(../assets/img/arrow.svg) !important;
-}
-
-.slick-prev {
+.preferred-packages .slick-prev {
   left : -68px !important; 
   width: 55px !important;
   height: 55px !important;
@@ -2242,13 +2241,16 @@ button:disabled {
   display: flex !important;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
-.slick-prev:before {
+.preferred-packages .slick-prev:before {
   content: url(../assets/img/arrow.svg) !important;
+  width: 20px;
+  height: 28px;
 }
 
-.slick-next {
+.preferred-packages .slick-next {
   right : -68px !important; 
   width: 55px !important;
   height: 55px !important;
@@ -2259,9 +2261,11 @@ button:disabled {
   align-items: center;
 }
 
-.slick-next:before {
+.preferred-packages .slick-next:before {
   content: url(../assets/img/arrow.svg) !important;
   transform: scaleX(-1);
+  width: 20px;
+  height: 28px;
 }
 
 @media only screen and (min-width: 1px) and (max-width: 667px) {
@@ -2287,4 +2291,86 @@ button:disabled {
   padding-left: 4px !important;
   padding-right: 4px !important;
 }
+
+.preferred-packages .slick-prev {
+  left : -2% !important; 
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.preferred-packages .slick-next {
+  right : -2% !important; 
+  width: 35px !important;
+  height: 35px !important;
+}
+.refer-earn .slick-slide {
+  width: 236px !important;
+  margin-right: 8px;
+}
+.refer-earn-img {
+  padding-right: 0px !important;
+}
+}
+
+.refer-earn {
+  margin-top: 48px;
+}
+
+.refer-earn-img {
+  height: 160px !important;
+  width: 100%;
+  padding-right: 12px;
+  background-color: transparent !important;
+}
+
+.refer-earn .slick-prev {
+  left : -1% !important; 
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 100%;
+  background-color:white  !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.refer-earn .slick-prev:before {
+  content: url(../assets/img/arrow.svg) !important;
+  width: 14px;
+  height: 18px;
+}
+
+.refer-earn .slick-next {
+  right : 0% !important; 
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 100%;
+  background-color:white  !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.refer-earn .slick-next:before {
+  content: url(../assets/img/arrow.svg) !important;
+  transform: scaleX(-1);
+  width: 14px;
+  height: 18px;
+}
+
+.know-more-wrapper::-webkit-scrollbar {
+  width: 32px;
+  padding: 2px;
+}
+
+/* Track */
+.know-more-wrapper::-webkit-scrollbar-track {
+  background-color: #D9BEF4;
+}
+ 
+/* Handle */
+.know-more-wrapper::-webkit-scrollbar-thumb {
+  background: #A854FC; 
+  border-radius: 4px;
 }

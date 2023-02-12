@@ -8,6 +8,7 @@ import Knowmore from "../components/Knowmore"
 import Head from 'next/head'
 import Header from "../components/Header";
 import PreferredPackages from "../components/PreferredPackages"
+import ReferAndEarn from "../components/ReferAndEarn"
 export default function Home() {
 
 
@@ -65,7 +66,7 @@ export default function Home() {
           <div className="col-12 " style={{ marginTop: '50px' }}>
             <hr style={{ border: '2px solid rgb(102, 102, 102)', margin: '10px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 0.5px 0.5px', backgroundColor: 'rgb(255, 255, 255)' }} />
           </div>) : ''}
-
+        <ReferAndEarn />
         <PreferredPackages />
         <Faqs />
         {localStorage.getItem('devise') === 'D' ? (

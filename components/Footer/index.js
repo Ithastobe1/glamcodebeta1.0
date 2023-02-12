@@ -101,12 +101,12 @@ function Footer() {
         <>
             <footer className="footer-container">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-6">
                         <div className="row">
                             <div className="col-12" />
                         </div>
                     </div>
-                    <div className="col-12">
+                    <div className="col-6">
                         <div className="row">
                             <div className="col-md-12 col-lg-2 tc">
                                 <a href="/about-us" className="footer-text">

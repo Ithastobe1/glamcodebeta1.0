@@ -10,7 +10,7 @@ function CustomNextArrow(props) {
   const { className, onClick } = props;
   return (
     <div
-      className={`${className} bg-white customArrows`}
+      className={`${className} bg-white`}
       onClick={onClick}
     >
       </div>
@@ -61,7 +61,7 @@ const PreferredPackages = () => {
 
   return (<>
     <hr className="hr-white" />
-    <Container>
+    <Container className="preferred-packages">
       <div className="title-content">
         <h2
           className="title font-familt-jost"
