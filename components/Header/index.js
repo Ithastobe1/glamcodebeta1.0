@@ -26,7 +26,7 @@ align-items: center;
 // `;
 
 const SidebarNav = styled.nav`
-background: linear-gradient(197.24deg,rgba(197,72,200,.95),rgba(240,155,184,.97) 38.62%,#ecd498) !important;
+background: linear-gradient(180deg, rgba(143, 99, 186, 0.89) 0%, #D9BEF4 100%); !important;
 }
 width: 80%;
 height: 100vh;

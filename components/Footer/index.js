@@ -14,13 +14,27 @@ import youtube from '../../assets/img/youtube.svg'
 import moment from "moment";
 import { frontService } from "../../_services/front.services";
 import { Link } from "react-scroll";
+import Logo from "../../glamcode.png";
+import mobile_icon from "../../assets/img/mobile_icon.svg";
+import email_icon from "../../assets/img/email_icon.svg";
+import playstore from "../../assets/img/playstore.svg";
+import appstore from "../../assets/img/appstore.svg";
+import twitter_icon from '../../assets/img/twitter_icon.svg'
+import youtube_icon from '../../assets/img/youtube_icon.svg'
+import instagram_icon from '../../assets/img/instagram_icon.svg'
+import facebook_icon from '../../assets/img/facebook_icon.svg'
+
+import { Container } from "react-bootstrap";
+import { useAmp } from 'next/amp';
+
+export const config = { amp: 'hybrid' };
 
 function Footer() {
     const router = useRouter()
     const cart = useSelector(state => state.cardAdd?.cart);
     const [total, setTotal] = React.useState(0);
     const [coupons, setCoupons] = useState([])
-
+    const isAmp = useAmp()
     const dataloctions = useSelector(state => state.loctions);
     const renderInput = () => {
 
@@ -97,18 +111,169 @@ function Footer() {
         return has
     }
 
+    console.log(isAmp);
+
     return (
         <>
             <footer className="footer-container">
-                <div className="row">
-                    <div className="col-6">
-                        <div className="row">
-                            <div className="col-12" />
+                <Container>
+                {isAmp ?<h1>tesabasbda</h1> :<div className="row mt-5">
+                    <div className="col-4">
+                        <div className='log footer-logo'>
+                            <a href='/'><img src={Logo.src} alt="Glam code" width="100%" height="100%" /></a>
                         </div>
                     </div>
-                    <div className="col-6">
-                        <div className="row">
-                            <div className="col-md-12 col-lg-2 tc">
+                    <div className="col-8">
+                        <div className="row text-white">
+                                <div className="col-5">
+                                    <h4 className="text-white">Contact Information</h4>
+                                    <div className="d-flex align-items-center mt-3">
+                                        <img src={mobile_icon.src} alt="Glam code" />
+                                        <p className="m-0 ps-3">+91-812-7111-333</p>
+                                    </div>
+                                    <div className="d-flex align-items-center mt-3">
+                                        <img src={email_icon.src} alt="Glam code" />
+                                        <p className="m-0 ps-3">glamourministry@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div className="col-3 footer-menu-text">
+                                    <h4 className="text-white">Main Menu</h4>
+                                    <p className="mb-1"><a href="/about-us" className="footer-text">
+                                        About Us
+                                    </a></p>
+                                    <p className="mb-1"><a href="/" className="footer-text">
+                                        Contact Us
+                                    </a></p>
+                                    <p className="mb-1"><a href="/" className="footer-text">
+                                        Membership
+                                    </a></p>
+                                    <p className="mb-1"><a href="/" className="footer-text">
+                                        Refer and Earn
+                                    </a></p>
+                                </div>
+                                <div className="col-3 footer-menu-text">
+                                    <h4 className="text-white">Serving in</h4>
+                                    {dataloctions.location?.map((x, i) =>
+                               <p className="mb-1"><a key={i} onClick={() => selecthandleclick(x.id, x.city, x.name, x.slug, x.price)} style={{ color: '#fff' }} href={`/${x.slug}`}> {x.city} </a></p>
+                            )}
+                                </div>
+                                    <h4>Download the GC App</h4>
+                                    <div className="d-flex align-items-center mt-3">
+                                        <a href="#"><img className="me-2" src={playstore.src} alt="Glam code" /></a>
+                                        <a href="#"><img src={appstore.src} alt="Glam code" /></a>
+                                    </div>
+                                <div className="d-flex justify-content-end">
+                                <a
+                                        href="https://instagram.com/myglamcode?igshid=YmMyMTA2M2Y="
+                                        className="social-icon me-3"
+                                        style={{
+                                            display: "inline-block",
+                                            width: 50,
+                                            height: 50,
+                                            position: "relative",
+                                            overflow: "hidden",
+                                            verticalAlign: "middle"
+                                        }}
+                                        target="_blank"
+                                        aria-label="twitter"
+                                    >
+                                        <div
+                                            className="social-container"
+                                            style={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                width: "100%",
+                                                height: "100%"
+                                            }}
+                                        >
+                                            <img src={instagram_icon.src} />
+                                        </div>
+                                    </a>
+                                    <a
+                                        href="https://youtube.com/channel/UC0tPgNGS96oVlkUqBf4ZM2Q"
+                                        className="social-icon me-3"
+                                        style={{
+                                            display: "inline-block",
+                                            width: 50,
+                                            height: 50,
+                                            position: "relative",
+                                            overflow: "hidden",
+                                            verticalAlign: "middle"
+                                        }}
+                                        target="_blank"
+                                        aria-label="twitter"
+                                    >
+                                        <div
+                                            className="social-container"
+                                            style={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                width: "100%",
+                                                height: "100%"
+                                            }}
+                                        >
+                                            <img src={youtube_icon.src} />
+                                        </div>
+                                    </a>
+                                    <a
+                                        href="https://twitter.com/GlamCode3?t=medt6YYBVczVXZ-IWiUObg&s=08"
+                                        className="social-icon me-3"
+                                        style={{
+                                            display: "inline-block",
+                                            width: 50,
+                                            height: 50,
+                                            position: "relative",
+                                            overflow: "hidden",
+                                            verticalAlign: "middle"
+                                        }}
+                                        target="_blank"
+                                        aria-label="twitter"
+                                    >
+                                        <div
+                                            className="social-container"
+                                            style={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                width: "100%",
+                                                height: "100%"
+                                            }}
+                                        >
+                                            <img src={twitter_icon.src} />
+                                        </div>
+                                    </a>
+                                    <a
+                                        href="https://www.facebook.com/myglamcode"
+                                        className="social-icon me-3"
+                                        style={{
+                                            display: "inline-block",
+                                            width: 50,
+                                            height: 50,
+                                            position: "relative",
+                                            overflow: "hidden",
+                                            verticalAlign: "middle"
+                                        }}
+                                        target="_blank"
+                                        aria-label="twitter"
+                                    >
+                                        <div
+                                            className="social-container"
+                                            style={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                width: "100%",
+                                                height: "100%"
+                                            }}
+                                        >
+                                            <img src={facebook_icon.src} />
+                                        </div>
+                                    </a>
+                                </div>
+                                    <h6 className="mt-3 ps-5">Copyright 2022 @Glamcode</h6>
+                            {/* <div className="col-md-12 col-lg-2 tc">
                                 <a href="/about-us" className="footer-text">
                                     About Us
                                 </a>
@@ -132,7 +297,7 @@ function Footer() {
                                 <a href="/" className="footer-text">
                                     Contact Us
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="col-12">
@@ -148,9 +313,10 @@ function Footer() {
                             )}
                         </div>
                     </div>
-                </div>
+                </div>}
+                </Container>
             </footer>
-            {
+            {/* {
                 localStorage.getItem('devise') === 'D' ? (<>
                     <div style={{ position: "fixed", zIndex: 9, right: 0, top: "30%" }}>
                         <ul className=" me-auto mb-2 mb-lg-0">
@@ -508,7 +674,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>)
-            }
+            } */}
 
 
             {(router.pathname === "/login" || router.pathname === "/payment" || router.pathname === "/checkout") ? "" : (cart.length > 0 ?

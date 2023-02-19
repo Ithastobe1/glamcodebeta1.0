@@ -19,13 +19,13 @@ export default function AddToCart({ data }) {
     }
 
     return (<>
-        <div className="text-end pb-2">
+        <div className="text-end">
             {inCart.length > 0 ? <div className="mt-0 Addtocart-Items-m Addtocart d-inline-flex gap-xl-3 gap-1">
                 <div className="addcart-minus" onClick={() => onDecrement(data.id)}>-</div>
                 <div className="addcart-count">{inCart[0].qty}</div>
                 <div className="addcart-plus" onClick={() => onIncrement(data)}>+</div>
             </div> :
-                <div className="Addtocart d-inline-flex gap-3" onClick={() => onIncrement(data)}>
+                <div className="Addtocart d-inline-flex gap-3 rounded-pill" onClick={() => onIncrement(data)}>
                     Add
                 </div>}
         </div>

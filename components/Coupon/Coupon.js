@@ -2,6 +2,8 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { frontService } from "../../_services/front.services";
+import Paytm_Logo from "../../assets/img/Paytm_Logo.svg"
+import CouponAppliedModal from "./CouponAppliedModal";
 
 export default function Coupon(props) {
     const { show, handleClose, coupon, setCoupon, total } = props
@@ -51,7 +53,8 @@ export default function Coupon(props) {
         return has
     }
 
-    return (<Modal
+    return (
+    <><Modal
         show={show}
         onHide={handleClose}
         size="lg"
@@ -60,7 +63,7 @@ export default function Coupon(props) {
         className='mobilepopud coupon-modal'>
         <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter" >
-                Coupon and Offers
+                Coupon & Offers
             </Modal.Title>
 
         </Modal.Header>
@@ -73,7 +76,7 @@ export default function Coupon(props) {
                                 setCode(e.target.value)
                                 setError("")
                             }} />
-                        <button className='search-btn pe-2' type='button'
+                        <button className='search-btn me-3' type='button'
                             onClick={() => {
                                 if (code) {
                                     const c = coupons.find(e => e.title === code)
@@ -102,13 +105,13 @@ export default function Coupon(props) {
                 {coupons.map((e, i) => {
                     return <div className="col-lg-12 mt-xl-2" key={i}>
                         <div className="row justify-content-between">
-                            {/* <div className="col-lg-3 col-3 text-center">
-                                <img src="/paytm.png" alt="logo" className="logo" />
-                            </div> */}
+                            <div className="col-lg-3 col-3 text-center">
+                                <img src={Paytm_Logo.src} alt="logo" className="logo" />
+                            </div>
                             <div className="col-lg-7 col-9">
-                                <p className="title">{e.title}</p>
-                                <p className="disacount-amount">Upto ₹500 off</p>
-                                <p className="save-amount">Save ₹{Math.round(e.amount)} on this order</p>
+                                <p className="title offer-title">{e.title}</p>
+                                <p className="disacount-amount pt-2">Upto ₹500 off</p>
+                                <p className="save-amount pt-2">Save ₹{Math.round(e.amount)} on this order</p>
                                 <p className="t-and-c">View T&C</p>
                             </div>
                             <div className="col-lg-2 col-3 text-end" onClick={() => {
@@ -129,5 +132,7 @@ export default function Coupon(props) {
             </div>
         </Modal.Body>
     </Modal>
+    <CouponAppliedModal show={false}/>
+    </>
     )
 }

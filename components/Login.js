@@ -236,7 +236,9 @@ export default function LoginModal(props) {
                                 {errors.phone && (
                                     <span style={{ marginLeft: '58px', color: 'red' }}>{errors.phone.message}</span>
                                 )}
-
+                                    <div className="text-center mt-3">
+                                        <input type="checkbox" name="termsAnd" /> <span className="ps-2">Agree to terms and conditions</span>
+                                    </div>
                                 <button disabled={sending} className="button">Send OTP</button>
                             </form>
 

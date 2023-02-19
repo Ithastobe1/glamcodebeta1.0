@@ -42,7 +42,7 @@ export default function Categoryslug() {
         return (
             items.map((item, index) => {
                 return (<li className="listService" key={index}>
-                    <i className="fa fa-snowflake-o" aria-hidden="true" />
+                    {/* <i className="fa fa-snowflake-o" aria-hidden="true" /> */}
                     {` ` + item.toString()}</li>);
             })
         );
@@ -188,7 +188,7 @@ export default function Categoryslug() {
                                         </div>
                                         <Row>
                                             {x?.service.map((y, i) => <>
-                                                <div className="col-md-6 col-12 p-md-5 pt-md-3 pb-md-0 p-2" key={i}
+                                                {false ? <div className="col-md-6 col-12 p-md-5 pt-md-3 pb-md-0 p-2" key={i}
                                                 >
                                                     <div className="servicesMD row servicesMD-bg-color-1">
                                                         <a className="col-4 p-0" href="#">
@@ -196,13 +196,73 @@ export default function Categoryslug() {
                                                                 className="image"
                                                                 src={y.service_image_url}
                                                                 alt={y.name}
+                                                                height="183px"
                                                             />
                                                         </a>
-                                                        <div className="col-8 pt-1 position-relative">
-                                                            <div className="title">
-                                                                <a href="#">{y.name}</a>
+                                                        <div className="col-8 pt-1 position-relative pt-2">
+                                                            <div className="title d-flex align-items-center justify-content-between">
+                                                                <a href="#" className=' service-title'>{y.name}</a>
+                                                                <AddToCart data={y} />
                                                             </div>
                                                             <div className="d-flex flex-row align-items-center" style={{ margin: "4% 0.625rem -2% 0%" }}>
+                                                                <div className="p-rl-2 Price">₹ {Math.round(y.price)}</div>
+                                                                <div className="offerPrice">₹ {Math.round(y.discounted_price)}</div>
+                                                                <div className="px-1 discountTitle">{y.discount}%</div>
+                                                            </div>
+                                                            <div className="lineDiv" />
+                                                            <div className="descriptionServices">
+                                                                <ul className="p-0 pt-2" style={{ marginBottom: "-25px" }}>
+                                                                    {mapItems(y.description.replace(/(<([^>]+)>)/ig, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/(?:&nbsp;)/g, '')
+                                                                        .replace(/&amp;/g, '&').toString().split('.'))}
+                                                                </ul>
+                                                            </div>
+                                                            <ViewDetails
+                                                                alldata={y}
+                                                            />
+
+                                                        </div>
+                                                    </div>
+                                                </div> :
+                                                    <div className="col-md-6 col-12 p-md-5 pt-md-3 pb-md-0 p-2" key={i}
+                                                    >
+                                                        <div className="servicesMD services-m-card row servicesMD-bg-color-1">
+                                                            <a className="col-5 p-0" href="#">
+                                                                <img
+                                                                    className="service-m-image"
+                                                                    src={y.service_image_url}
+                                                                    alt={y.name}
+                                                                />
+                                                            </a>
+                                                            <div className="col-7 pt-1 position-relative pt-2">
+                                                                <div className="title d-flex align-items-center justify-content-between">
+                                                                    <a href="#" className='service-m-title'>{y.name}</a>
+                                                                </div>
+                                                                <div className="d-flex flex-row align-items-center flex-wrap">
+                                                                    <div className="pe-1 Price price-m">₹ {Math.round(y.price)}</div>
+                                                                    <div className="offerPrice price-m">₹ {Math.round(y.discounted_price)}</div>
+                                                                    <div className="px-1 discountTitle-m me-4">{y.discount}%</div>
+                                                                    <AddToCart data={y} />
+                                                                </div>
+                                                                <div className="lineDiv" />
+                                                                <div className="descriptionServices descriptionService-m">
+                                                                    <ul className="p-0 pt-2 m-0">
+                                                                        {mapItems(y.description.replace(/(<([^>]+)>)/ig, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/(?:&nbsp;)/g, '')
+                                                                            .replace(/&amp;/g, '&').toString().split('.'))}
+                                                                    </ul>
+                                                                </div>
+                                                                <div className="view-detail-m mt-1">
+                                                                    <ViewDetails
+                                                                        alldata={y}
+                                                                        className="viewDetail-m"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            </>)}
+                                                            {/* <div className="d-flex flex-row align-items-center" style={{ margin: "4% 0.625rem -2% 0%" }}>
                                                                 <div className="p-rl-2 Price">₹ {Math.round(y.price)}</div>
                                                                 <div className="p-rl-2 offerPrice">₹ {Math.round(y.discounted_price)}</div>
                                                                 <div className="p-rl-2 discountTitle">{y.discount}%</div>
@@ -226,13 +286,7 @@ export default function Categoryslug() {
                                                             </div>
                                                             <ViewDetails
                                                                 alldata={y}
-                                                            />
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </>)}
+                                                            /> */}
                                         </Row>
 
                                     </div>)}

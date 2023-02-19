@@ -336,10 +336,10 @@ button {
 .timeSlot-all {
   width: 100%;
   background: #fff;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 5px;
   margin-top: 10px;
-  min-height: 300px;
+  /* min-height: 300px; */
 }
 
 .timeSlot-all .inside-title {
@@ -393,7 +393,14 @@ button {
   border: 0.5px solid #000;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  padding: 15px;
+  padding: 12px;
+}
+
+.checkout-text {
+  font-size: 12px;
+  line-height: 14px;
+  color: #4A4A4A;
+  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .address-all .Adbutton {
@@ -475,7 +482,7 @@ button {
 .checkout-all .timeSlot-all {
   width: 100%;
   background: #fff;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 5px;
   margin-top: 10px;
 }
@@ -521,18 +528,18 @@ button {
 }
 
 .Addtocart-Items-m .addcart-minus {
-  padding: 0 5px 5px;
+  /* padding: 0 5px 5px; */
   font-size: 20px;
 }
 
 .Addtocart-Items-m .addcart-plus {
-  padding: 5px;
+  /* padding: 5px; */
   font-size: 20px;
 }
 
 .Addtocart-Items-m .addcart-count,
 .Addtocart-Items-m .addcart-plus {
-  padding: 5px;
+  /* padding: 5px; */
   font-size: 20px;
 }
 
@@ -541,8 +548,7 @@ button {
   padding: 2px 12px;
   text-align: right;
   margin-top: 5.5%;
-  background: #7c00b7;
-  border-radius: 10px;
+  background: #A253F0;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
@@ -550,7 +556,8 @@ button {
   line-height: 22px;
   align-items: center;
   color: #fff;
-  border: 1px solid #7c00b7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px !important;
 }
 
 .checkout-all .timeSlot-all .inside-title {
@@ -566,18 +573,21 @@ button {
 
 .checkout-all .section-address .inside-title .inside-checkall {
   float: right;
+  font-size: 16px;
+  color: #A253F0;
+  cursor: pointer;
 }
 
 .inside-checkall {
-  padding-top: 14px;
+  padding-top: 4px;
   margin-right: 5px;
 }
 
 .checkout-all .checkoutBtn-container {
   width: 50%;
   padding: 10px;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: auto;
+  /* margin-right: 25%; */
 }
 
 .slick-slide {
@@ -589,15 +599,41 @@ button {
   margin-left: 10%;
   margin-right: 10%;
   padding: 5px;
-  background: #a253f0;
+  background: #8E6CEA;
   border-radius: 50px;
   font-family: "Jost";
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
   color: #fff;
-  box-shadow: 5px 5px 5px #000 !important;
+  /* box-shadow: 5px 5px 5px #000 !important; */
   border: 0;
+}
+
+.freq-text {
+  font-size: 10px;
+  line-height: 11px;
+  color: #393939;
+}
+
+.freq-wrapper {
+  width: 100%;
+  /* height: 66px; */
+}
+
+.freq-add-btn {
+  background: #A253F0 !important;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px !important;
+  border: 0px !important;
+}
+
+.search-input::placeholder {
+  color: #8E8E8E !important;
+}
+
+.offer-title {
+  color: #373737;
 }
 
 .row-m-check .col-6-m-check .selected {
@@ -785,7 +821,7 @@ button {
   text-align: end;
 }
 a:hover {
-  color: #ff6565 !important;
+  color: inherit !important;
 }
 
 .footer-text {
@@ -959,7 +995,7 @@ a:hover {
   font-family: "Alata";
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 19px;
   align-items: center;
   color: #616165;
@@ -976,10 +1012,25 @@ a:hover {
 }
 
 .servicesMD .offerPrice {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 21px;
   color: #7900d9;
   margin-right: 17px;
+}
+
+.product-details-content .offerPrice {
+  font-size: 14px;
+  line-height: 21px;
+  color: #474747;
+}
+
+.product-details-content .time-text {
+  color: #555555;
+  font-size: 14px;
+}
+
+.product-details-content .discountPercentage {
+  color: #474747;
 }
 
 .p-rl-2 {
@@ -994,9 +1045,9 @@ a:hover {
 
 .servicesMD .Addtocart,
 #cart-btn .Addtocart {
-  padding: 3px 10px;
+  padding: 3px 12px;
   text-align: right;
-  background: #7c00b7;
+  background: #A854FC;
   border-radius: 10px;
   font-family: "Inter";
   font-style: normal;
@@ -1005,8 +1056,10 @@ a:hover {
   line-height: 22px;
   align-items: center;
   color: #fff;
-  border: 1px solid #7c00b7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .servicesMD .viewDetails,
@@ -1015,7 +1068,7 @@ a:hover {
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  border: 1px solid #dedede;
+  /* border: 1px solid #dedede; */
 }
 
 .checkout-all hr {
@@ -1035,15 +1088,17 @@ a:hover {
 }
 
 .fa-star::before {
-  color: #daa520;
+  /* color: #daa520; */
 }
 
 .cardhove.card.mt-2 {
   cursor: pointer;
 }
 
-.product-details-content .product-details-action .price {
-  font-size: 44px;
+.product-details-content .price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #474747;
 }
 
 .card.mt-2.active {
@@ -1057,9 +1112,14 @@ a:hover {
 }
 
 .product-details-pro-qty {
-  border-bottom: 1px solid #e3e3e3;
-  padding-bottom: 34px;
+  /* border-bottom: 1px solid #e3e3e3; */
+  /* padding-bottom: 34px; */
   margin-bottom: 32px;
+}
+
+.rate {
+  color: #474747;
+  font-size: 12px;
 }
 
 .pro-qty {
@@ -1174,13 +1234,15 @@ a:hover {
   margin-top: 45px;
   padding: 4px 13px;
   bottom: 6%;
-  background: #7c00b7;
+  background: #A854FC;
   font-size: 12px;
   line-height: 22px;
   align-items: center;
   text-align: center;
   color: #fff;
   cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
 }
 
 .listService {
@@ -1189,6 +1251,8 @@ a:hover {
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
+  color: #4F4E4E;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .Addtocart {
@@ -1207,14 +1271,13 @@ a:hover {
 }
 
 .discountTitle {
-  width: 49px;
   background: rgba(0, 0, 0, 0.97);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.47843137254901963) !important;
-  border-radius: 10px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); 
+  border-radius: 6px;
   font-family: "Alata";
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   align-items: center;
   color: #fff;
   border: 1px solid #000;
@@ -1227,16 +1290,16 @@ a:hover {
 .servicesMD {
   box-sizing: border-box;
   position: relative;
-  min-height: 220px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.43137254901960786) !important;
-  border-radius: 6px;
+  min-height: 183px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 1px;
 }
 
 .servicesMD .image {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   border-radius: 6px;
 }
 
@@ -1441,6 +1504,7 @@ a:hover {
   height: 0;
   background-color: #585656;
   border: 1px solid #585656;
+  margin-top: 28px;
 }
 
 .checkout-all .section-selectBooking::-webkit-scrollbar {
@@ -1620,7 +1684,8 @@ a:hover {
 .popimag {
   object-fit: fill;
   width: 100%;
-  max-height: 537px;
+  max-height: 174px;
+  /* max-width: 193px; */
 }
 #blogs .recent-posts::-webkit-scrollbar {
   background-color: #d9d9d9;
@@ -1775,7 +1840,7 @@ a:hover {
 .coupon-modal .modal-content .t-and-c {
   font-family: "Alata";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   line-height: 14px;
   color: #835ee8;
@@ -2087,13 +2152,15 @@ button:disabled {
   }
 
   .servicesMD {
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
+    min-height: auto;
   }
 
   .servicesMD .lineDiv {
     width: 98%;
     height: 0;
     border: 1px solid #585656;
+    margin-top: 12px;
   }
 
   #cart-btn .Addtocart,
@@ -2101,9 +2168,11 @@ button:disabled {
     padding: 0 8px;
   }
 
-  .servicesMD .viewDetails {
-    width: fit-content;
-  }
+    .servicesMD .viewDetails {
+      width: fit-content;
+      padding: 1px 8px;
+      margin-top: 41px;
+    }
 
   .header-css-head .inside-text-head {
     font-size: 24px;
@@ -2171,6 +2240,10 @@ button:disabled {
     height: 95% !important;
     margin: auto;
     margin-top: 30px !important;
+  }
+  .view-detail-m {
+    position: relative;
+    height: 30px;
   }
 }
 
@@ -2373,4 +2446,88 @@ button:disabled {
 .know-more-wrapper::-webkit-scrollbar-thumb {
   background: #A854FC; 
   border-radius: 4px;
+}
+
+.footer-logo {
+  max-width: 152px;
+}
+
+.footer-menu-text p a{
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.service-title {
+font-weight: 400;
+font-size: 19px;
+line-height: 24px;
+display: flex;
+align-items: center;
+color: #000000;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.offerSuccess {
+  color: #007349;
+  background: rgba(0, 173, 90, 0.1);
+}
+
+.offer-success-text {
+  color: #8C8C8C;
+}
+
+.offer-got-btn {
+  background: #8E6CEA !important;
+  border-radius: 3px;
+  width: 100%;
+  border: none !important;
+}
+
+.coupon-success-modal .modal-dialog {
+max-width: 372px;
+}
+
+.service-m-image {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000000;
+  border-radius: 12px;
+}
+
+.service-m-title {
+  font-size: 12px !important;
+  color: #000000;
+}
+
+.discountTitle-m {
+  background: rgba(0, 0, 0, 0.97);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); 
+  border-radius: 10px;
+  font-family: "Alata";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  align-items: center;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.services-m-card {
+  min-height: 160px;
+}
+
+.price-m {
+  font-size: 10px !important;
+}
+
+.viewDetail-m {
+  margin-top: 0 !important;
+  bottom: 0 !important;
+}
+
+.descriptionService-m {
+  max-height: 65px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
 }

@@ -1,6 +1,6 @@
 import Logo from "/glamcode.png"
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux';
 import "slick-carousel/slick/slick.css";
@@ -13,6 +13,12 @@ import { clearCart } from '../store/actions';
 import useRazorpay from "react-razorpay";
 import AddToCart from "../components/Cart/AddToCart";
 import LoginModal from "../components/Login";
+import ViewDetails from "../components/ViewDetails/ViewDetails";
+import addon_img from '../assets/img/addon_img.svg';
+import coupon_icon from '../assets/img/coupon_icon.svg';
+import upi_icon from '../assets/img/upi_icon.svg';
+import celebration from "../assets/img/celebration.svg"
+import AddressAndUserDetail from "../components/AddressAndUserDetail";
 
 function Payment() {
     const Razorpay = useRazorpay()
@@ -25,7 +31,8 @@ function Payment() {
     // const [coupon, setCoupon] = useState(null)
     const [sending, setSending] = useState(false)
     const [pType, setPType] = useState("cash")
-    const [update, setUpdate] = useState(1)
+    const [update, setUpdate] = useState(1);
+    const [showAddressModal, setShowAddressModal] = useState(false)
     const coupon_id = localStorage.getItem("coupon_id")
     const coupon_amount = localStorage.getItem("coupon_amount")
     const coupon_min = localStorage.getItem("coupon_min")
@@ -168,7 +175,7 @@ function Payment() {
     const mapItems = (items) => {
         return (
             items.map((item, index) => {
-                return (<li key={index} className="text" style={{ listStyle: 'disc', }}>{` ` + item.toString()}</li>);
+                return (<li key={index} className="text listService pb-2" style={{ listStyle: 'disc', }}>{` ` + item.toString()}</li>);
             })
         );
     }
@@ -187,7 +194,7 @@ function Payment() {
         <div className="servicedesk-bg checkout-all" style={{ paddingBottom: '50px' }}>
             <div className="header-css-head">
                 <Container fluid >
-                    <div className="d-flex flex-row" onClick={() => router.back()}>
+                    <div className="d-flex flex-row py-2" onClick={() => router.back()}>
                         <div className="icon-alignments">
                             <i className="fa fa-chevron-left fontSize-m-20" />
                         </div>
@@ -195,9 +202,13 @@ function Payment() {
                     </div>
                 </Container>
             </div>
-            <Row className='mt-5 card-container'>
+            <Row className='mt-5 py-4 card-container'>
                 <Col md={1}></Col>
                 <Col md={5}>
+                    <div className="section-address d-block d-md-none">
+                        <a onClick={()=> setShowAddressModal(true)} className="inside-title" style={{ fontSize: 22 }}>Address<span className="inside-checkall">Change</span></a>
+                        <p className="inside-items">{userAddress?.address_heading},{userAddress?.address},{userAddress?.street}</p>
+                    </div>
 
                     {cart.length > 0 ? (<>
 
@@ -205,17 +216,33 @@ function Payment() {
                             {cart.map((item, index) => (<>
 
                                 <div className="col-12 p-md-5 pt-md-3 pb-md-0 p-2" key={index}>
-                                    <div className="servicesMD row servicesMD-bg-color-1">
-                                        <a className="col-4 p-0" href="#">
+                                    <div className="servicesMD row servicesMD-bg-color-1 px-4 py-3">
+                                        {/* <a className="col-4 p-0" href="#">
                                             <img
                                                 className="image"
                                                 src={item.service_image_url}
                                                 alt={item.name}
 
                                             />
-                                        </a>
-                                        <div className="col-8 pt-1 position-relative">
-                                            <div className="title">
+                                        </a> */}
+                                        <div className="col-12 pt-1 position-relative">
+                                            <div className="title d-flex align-items-center justify-content-between">
+                                                <a href="#" className='service-title'>{item.name}</a>
+                                                <AddToCart data={item} />
+                                            </div>
+                                            <div className="d-flex flex-row align-items-center" style={{ margin: "4% 0.625rem -2% 0%" }}>
+                                                <div className="p-rl-2 Price">₹ {Math.round(item.price)}</div>
+                                                <div className="offerPrice">₹ {Math.round(item.discounted_price)}</div>
+                                                <div className="px-1 discountTitle">{item.discount}%</div>
+                                            </div>
+                                            <ViewDetails alldata={item} className="mt-2 w-25" /> 
+                                            <div className="descriptionServices">
+                                                <ul className="p-0 ps-2 m-0" style={{ fontSize: 10, }}>
+                                                    {mapItems(item.description.replace(/(<([^>]+)>)/ig, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/(?:&nbsp;)/g, '')
+                                                        .replace(/&amp;/g, '&').toString().split('.'))}
+                                                </ul>
+                                            </div> 
+                                            {/* <div className="title">
                                                 <a href="#"> {item.name}</a>
                                             </div>
                                             <div className="d-flex flex-row mt-2">
@@ -241,6 +268,37 @@ function Payment() {
                                                     {mapItems(item.description.replace(/(<([^>]+)>)/ig, '').replace(/(?:\r\n|\r|\n)/g, '').replace(/(?:&nbsp;)/g, '')
                                                         .replace(/&amp;/g, '&').toString().split('.'))}
                                                 </ul>
+                                            </div> */}
+                                        </div>
+                                    </div>
+                                    <h4 className="my-3 d-none d-md-block">Frequently Added</h4>
+                                    <div className="d-none d-md-flex row">
+                                        <div className="freq-wrapper col-6 col-md-3 mb-3 mb-md-0">
+                                            <img src={addon_img.src} width="100%" />
+                                            <div className="bg-white py-2 pb-3 w-100 d-flex align-items-center flex-column">
+                                                <h6 className="freq-text text-center">Party Makeup</h6>
+                                                <Button className="freq-add-btn px-3 py-0">Add</Button>
+                                            </div>
+                                        </div>
+                                        <div className="freq-wrapper col-6 col-md-3 mb-3 mb-md-0">
+                                            <img src={addon_img.src} width="100%" />
+                                            <div className="bg-white py-2 pb-3 w-100 d-flex align-items-center flex-column">
+                                                <h6 className="freq-text text-center">Party Makeup</h6>
+                                                <Button className="freq-add-btn px-3 py-0">Add</Button>
+                                            </div>
+                                        </div>
+                                        <div className="freq-wrapper col-6 col-md-3 mb-3 mb-md-0">
+                                            <img src={addon_img.src} width="100%" />
+                                            <div className="bg-white py-2 pb-3 w-100 d-flex align-items-center flex-column">
+                                                <h6 className="freq-text text-center">Party Makeup</h6>
+                                                <Button className="freq-add-btn px-3 py-0">Add</Button>
+                                            </div>
+                                        </div>
+                                        <div className="freq-wrapper col-6 col-md-3 mb-3 mb-md-0">
+                                            <img src={addon_img.src} width="100%" />
+                                            <div className="bg-white py-2 pb-3 w-100 d-flex align-items-center flex-column">
+                                                <h6 className="freq-text text-center">Party Makeup</h6>
+                                                <Button className="freq-add-btn px-3 py-0">Add</Button>
                                             </div>
                                         </div>
                                     </div>
@@ -259,108 +317,13 @@ function Payment() {
                 </Col>
                 <Col md={1}></Col>
                 <Col md={4}>
-                    <div className="section-address">
-                        <a href="/myaddress" className="inside-title" style={{ fontSize: 22 }}>Address<span className="inside-checkall"><i className="fa fa-edit"></i></span></a>
+                    <div className="section-address d-none d-md-block">
+                        <a onClick={()=> setShowAddressModal(true)} className="inside-title" style={{ fontSize: 22 }}>Address<span className="inside-checkall">Change</span></a>
                         <p className="inside-items">{userAddress?.address_heading},{userAddress?.address},{userAddress?.street}</p>
                     </div>
-                    <div className="timeSlot-all">
-                        <p className="inside-title">Summary</p>
-
-                        <div className="row-m-check">
-
-                            <div className="col-12">
-                                <div className="d-flex flex-row justify-content-between-flex">
-                                    <p className="p-1 font-family-alata">Service Charge</p>
-                                    <p className="p-1 font-family-alata">₹ {total}</p>
-                                </div>
-                            </div>
-
-
-                            <div className="col-12">
-                                <div className="d-flex flex-row justify-content-between-flex">
-                                    <p className="p-1 font-family-alata">Transport Fees</p>
-                                    <p className="p-1 font-family-alata">₹ 0</p>
-                                </div>
-                            </div>
-
-                            <div className="col-12">
-                                <div className="d-flex flex-row justify-content-between-flex">
-                                    <p className="p-1 font-family-alata"> Safety & Hygiene Fee</p>
-                                    <p className="p-1 font-family-alata">₹ 49</p>
-                                </div>
-                            </div>
-
-
-                            {!coupon_id ? null : <div className="col-12">
-                                <div className="d-flex flex-row justify-content-between-flex">
-                                    <p className="p-1 font-family-alata">Coupon</p>
-                                    <p className="p-1 font-family-alata">-₹ {Math.round(coupon_amount)}</p>
-                                </div>
-                            </div>}
-
-                            <div className="col-12" >
-                                <div className="d-flex flex-row justify-content-between-flex">
-                                    <p className="p-1 font-family-alata">Total Service Amount Payable</p>
-                                    <p className="p-1 font-family-alata">₹ {finalTotal}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className='timeSlot-all'>
-                        <p className="inside-title">Summary</p>
-                        <div className="col-12 mt-2">
-                            <div className="background-deflex" onClick={() => {
-                                if (!coupon_id) {
-                                    setCouponModal(true)
-                                    setUpdate(update - 1)
-                                } else {
-                                    setUpdate(update + 1)
-                                    localStorage.removeItem("coupon_id")
-                                    localStorage.removeItem("coupon_amount")
-                                    localStorage.removeItem("coupon_min")
-                                }
-                            }
-                            }>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <div>
-                                            <i className="fa fa-tag fontSize-m-20"></i>
-                                        </div>
-                                        <div style={{ marginLeft: '10px' }} >
-                                            {!coupon_id ? "Apply Coupon" : "Remove Coupon"}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <i className="fa fa-chevron-right fontSize-m-20"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 mt-2">
-                            <div className="background-deflex"
-                                onClick={() => { setPType("razorpay") }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-                                    onClick={() => { setPType("razorpay") }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <div>
-                                            <i className="fa fa-credit-card fontSize-m-20" aria-hidden="true"></i>
-                                        </div>
-                                        <div style={{ marginLeft: '10px' }}>
-                                            Card & Upi
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        {pType === "razorpay" ?
-                                            <i className="fa fa-dot-circle-o  fontSize-m-24" style={{ fontSize: 24 }}></i>
-                                            : <i className="fa fa-circle-thin  fontSize-m-24" style={{ fontSize: 24 }}></i>}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 mt-2">
+                    <div className=''>
+                        {/* <p className="inside-title">Summary</p> */}
+                        <div className="col-12 mt-4">
                             <div className="background-deflex"
                                 onClick={() => { setPType("cash") }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}                                >
@@ -380,8 +343,111 @@ function Payment() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col-12 mt-4">
+                            <div className="background-deflex"
+                                onClick={() => { setPType("razorpay") }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                                    onClick={() => { setPType("razorpay") }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <div>
+                                        <img src={upi_icon.src} width="36px"/>
+                                        </div>
+                                        <div style={{ marginLeft: '10px' }}>
+                                            Card & Upi
+                                        </div>
+                                    </div>
 
+                                    <div>
+                                        {pType === "razorpay" ?
+                                            <i className="fa fa-dot-circle-o  fontSize-m-24" style={{ fontSize: 24 }}></i>
+                                            : <i className="fa fa-circle-thin  fontSize-m-24" style={{ fontSize: 24 }}></i>}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-12 mt-4">
+                            <div className="background-deflex" onClick={() => {
+                                if (!coupon_id) {
+                                    setCouponModal(true)
+                                    setUpdate(update - 1)
+                                } else {
+                                    setUpdate(update + 1)
+                                    localStorage.removeItem("coupon_id")
+                                    localStorage.removeItem("coupon_amount")
+                                    localStorage.removeItem("coupon_min")
+                                }
+                            }
+                            }>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <div>
+                                            <img src={coupon_icon.src} width="32px"/>
+                                        </div>
+                                        <div style={{ marginLeft: '10px' }} >
+                                            {!coupon_id ? "Apply Coupon" : "Remove Coupon"}
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <i className="fa fa-chevron-right fontSize-m-20"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div className="offerSuccess mt-3 d-flex align-items-center px-4">
+                        <img src={celebration.src} width={28} height={28} />
+                        <h6 className="p-2 m-0">Yay! you have saved  ₹850 on final bill</h6>
+                    </div>
+                    <Card className="timeSlot-all">
+                        <p className="inside-title">Summary</p>
+
+                        <div className="row-m-check py-2">
+
+                            <div className="col-12">
+                                <div className="d-flex flex-row justify-content-between-flex">
+                                    <p className="m-1 font-family-alata">Service Charge</p>
+                                    <p className="m-1 font-family-alata">₹ {total}</p>
+                                </div>
+                            </div>
+
+
+                            <div className="col-12">
+                                <div className="d-flex flex-row justify-content-between-flex">
+                                    <p className="m-1 font-family-alata">Transport Fees</p>
+                                    <p className="m-1 font-family-alata">₹ 0</p>
+                                </div>
+                            </div>
+
+                            <div className="col-12">
+                                <div className="d-flex flex-row justify-content-between-flex">
+                                    <p className="m-1 font-family-alata"> Safety & Hygiene Fee</p>
+                                    <p className="m-1 font-family-alata">₹ 49</p>
+                                </div>
+                            </div>
+
+
+                            {!coupon_id ? null : <div className="col-12">
+                                <div className="d-flex flex-row justify-content-between-flex">
+                                    <p className="m-1 font-family-alata">Coupon</p>
+                                    <p className="m-1 font-family-alata">-₹ {Math.round(coupon_amount)}</p>
+                                </div>
+                            </div>}
+                        </div>
+                        <Card.Footer className="bg-white">
+                            <div className="col-12" >
+                                <div className="d-flex flex-row justify-content-between-flex">
+                                    <p className="m-1 font-family-alata">Total Service Amount Payable</p>
+                                    <p className="m-1 font-family-alata">₹ {finalTotal}</p>
+                                </div>
+                            </div>
+
+                        </Card.Footer>
+                    </Card>
+                    <p className="checkout-text mt-3"><p className="fw-semibold m-0">*A small fee towards 100% care for you!</p>
+                    This fee is spent on the traing of the Proffessional  and  safety of the Customer & Service
+                     Provider suring the time of service which also includes like disposables.</p>
+
                     <div className="checkoutBtn-container ">
                         <button className="checkoutBtn-all" type='button'
                             //disabled={cart.length === 0 || sending}
@@ -410,14 +476,14 @@ function Payment() {
                             }} >{sending ?
 
                                 "Booking" :
-                                "Book Order"}</button>
+                                "Book Service"}</button>
                     </div>
                 </Col>
                 <Col md={1}></Col>
 
             </Row>
             <ToastContainer />
-
+            <AddressAndUserDetail show={showAddressModal} onHide={() => setShowAddressModal(false)} />
         </div>
     </>);
 }
